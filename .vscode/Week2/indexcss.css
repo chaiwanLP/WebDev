@@ -1,0 +1,228 @@
+@font-face {
+    font-family:'kanit';
+    src: url(./Kanit/Kanit-Regular.ttf);
+}
+body{
+    background-color: rgb(48,0,85,255);
+}
+.container{
+    overflow-x: auto;
+    gap: 15px; 
+    padding: 0 10px;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.container::-webkit-scrollbar{
+    height: 8px;
+    margin-top: 10px;
+}
+.container::-webkit-scrollbar-thumb{
+    background-color: rgb(255, 255, 255, 0.5);
+    border-radius: 10px;
+    margin-top: 10px;
+
+}
+.container::-webkit-scrollbar-track{
+    background: rgba(255, 255, 255, 0.2);
+    margin-top: 10px;
+
+}
+
+
+.Rect{
+    display: flex;
+}
+
+.image-1:hover{
+    transform: scale(1.01);
+}
+.image-2:hover{
+    transform: scale(1.01);
+}
+.image-3:hover{
+    transform: scale(1.01);
+}
+.image-4:hover{
+    transform: scale(1.01);
+}
+.image-5:hover{
+    transform: scale(1.01);
+}
+.image-6:hover{
+    transform: scale(1.01);
+
+}
+
+
+.Rect-1{
+    background-color: gray;
+    width: 300px;
+    height: 700px;
+    margin-top: 50px;
+    margin-left: 250px;
+    position: relative;
+}
+.image-1 .full-link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+    text-decoration: none; 
+}
+
+
+.Rect-2{
+    background-color: gray;
+    width: 300px;
+    height: 700px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.image-2 .full-link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+    text-decoration: none; 
+}
+
+
+.Rect-3{
+    background-color: gray;
+    width: 300px;
+    height: 700px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.image-3 .full-link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+    text-decoration: none; 
+}
+
+
+.Rect-4{
+    background-color: gray;
+    width: 300px;
+    height: 700px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.image-4 .full-link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+    text-decoration: none; 
+}
+
+
+.Rect-5{
+    background-color: gray;
+    width: 300px;
+    height: 700px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.image-5 .full-link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+    text-decoration: none; 
+}
+
+
+
+.squre{
+    width: 10px;
+    height: 50px;
+    background-color: yellow;
+    white-space: nowrap;
+    margin-left: 250px;
+    margin-top: 250px;
+}
+.text-head{
+    color:white;
+    font-weight: bold;
+    font-size: 50px;
+    margin-left: 20px;
+}
+.text-head:hover{
+    color: yellow;
+}
+.image-1{
+    background-image: url(./image/Arcan-small.jpg);
+    background-size: cover;
+    width: 300px;
+    height: 440px;
+}
+.image-2{
+    background-image: url(./image/Mona2.jpg);
+    background-size: cover;
+    width: 300px;
+    height: 440px;
+}
+.image-3{
+    background-image: url(./image/wicked.jpg);
+    background-size: cover;
+    width: 300px;
+    height: 440px;
+}
+.image-4{
+    background-image: url(./image/squid.jpg);
+    background-size: cover;
+    width: 300px;
+    height: 440px;
+}
+.image-5{
+    background-image: url(./image/Kraven.jpg);
+    background-size: cover;
+    width: 300px;
+    height: 440px;
+}
+
+.text-under_image{
+    margin: 10px;
+    font-size: 20px;
+    color: yellow;
+}
+.text{
+    color: white;
+    font-size: 25px;
+    margin: 5px;
+}
+.Rect-whilelist{
+    margin-left: 40px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 200px;
+    background-color: rgb(43, 56, 56);
+    border-radius: 20px ;
+}
+.text-whilelist{
+    color:rgb(76, 157, 233);
+}
+.Traller{
+    color: white;
+    margin-top: 20px;
+}
+.Traller:hover{
+    color: yellow;
+}
+.link-target{
+    color: white;
+    text-decoration: none;
+    margin-left:100px ;
+}
+.link-target:hover{
+    color: yellow;
+}
+.text-whilelist:hover{
+    color: yellow;
+}

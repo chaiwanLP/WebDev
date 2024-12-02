@@ -4,7 +4,7 @@
 }
 .container {
     position: relative;
-    height: 100vh; /* ให้ความสูงเต็มหน้าจอ */
+    height: 100vh; 
 }
 .background-behind {
     background-image: url('./Image/Arcan-bg.jpg');
@@ -38,7 +38,7 @@ body{
     font-family: kanit;
 }
 .small-under_background-hehind{
-    background-image: url('./Image/Arcan-smaller.jpg');
+    background-image: url('./Image/squid.jpg');
     background-size: cover;
     height: 180px;
     width: 128px;
@@ -96,59 +96,63 @@ body{
     height: 80px;
     border-radius: 50%; 
     background-color: gray;
-    margin-top: 170px;
+    margin-top: 120px;
     object-fit: cover;
 
 }
 .circle1{
-    background-image: url('./Image/Hailee-Steinfeld.jpg');
+    background-image: url('./Image/Lee Jung-jae.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 50%;
 }
 .circle2{
-    background-image: url('./Image/Ella-Purnell.jpg');
+    background-image: url('./Image/Lee Byung-hun.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 50%;
-
 }
 .circle3{
-    background-image: url('./Image/Kevin.jpg');
+    background-image: url('./Image/Wi Ha-joon.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 50%;
-
-
 }
 .circle4{
-    background-image: url('./Image/Katie.jpg');
+    background-image: url('./Image/Gong Yoo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+.circle5 {
+    background-image: url('./Image/Park Gyuyoung.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 50%;
 }
 
+
+
 @media (max-width: 768px) {
-    .circle-main {
-        gap: 40px;
-    }
     .circle-main div {
-        width: 60px; 
+        width: 60px;
         height: 60px;
     }
 }
+
 
 .nameAc {
     color: white;
     display: flex;
     margin-left:  435px;
-    gap: 20px;               
-    margin-top: 10px;        
-    font-size: 13px;         
+    gap: 20px;                
+    margin-top: 10px;         
+    font-size: 13px;     
 }
 
 .name1{
@@ -161,5 +165,9 @@ body{
     margin-left: 10px;
 }
 .name4{
-    margin-left: 5px;
+    margin-left: 25px;
+
+}
+.name5{
+    margin-left: 15px;
 }

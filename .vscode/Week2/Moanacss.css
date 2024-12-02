@@ -4,17 +4,17 @@
 }
 .container {
     position: relative;
-    height: 100vh; /* ให้ความสูงเต็มหน้าจอ */
+    height: 100vh; 
 }
 .background-behind {
-    background-image: url('./Image/Arcan-bg.jpg');
+    background-image: url('./Image/Moana2-bg.jpg');
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
     height: 80vh;
     width: 100%; 
     position: relative;
-    border-radius:  2rem;
+    border-radius: 2rem;
 }
 
 .video {
@@ -38,7 +38,7 @@ body{
     font-family: kanit;
 }
 .small-under_background-hehind{
-    background-image: url('./Image/Arcan-smaller.jpg');
+    background-image: url('./Image/Mona2.jpg');
     background-size: cover;
     height: 180px;
     width: 128px;
@@ -94,50 +94,33 @@ body{
 .circle-main div {
     width: 80px;
     height: 80px;
-    border-radius: 50%; 
-    background-color: gray;
-    margin-top: 170px;
-    object-fit: cover;
-
-}
-.circle1{
-    background-image: url('./Image/Hailee-Steinfeld.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     border-radius: 50%;
+    background-color: gray;
+    margin-top: 70px;
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+}
+
+
+.circle1{
+    background-image: url('./Image/Auli\'iCravalho.jpg');
 }
 .circle2{
-    background-image: url('./Image/Ella-Purnell.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-
+    background-image: url('./Image/Dwayne Johnson.jpg');
 }
 .circle3{
-    background-image: url('./Image/Kevin.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-
-
+    background-image: url('./Image/Alan Tudyk.jpg');
 }
 .circle4{
-    background-image: url('./Image/Katie.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 50%;
+    background-image: url('./Image/Temuera\ Morrison.jpg');
 }
-
 @media (max-width: 768px) {
     .circle-main {
-        gap: 40px;
+        gap: 40px; 
     }
     .circle-main div {
-        width: 60px; 
+        width: 60px;
         height: 60px;
     }
 }
@@ -146,9 +129,9 @@ body{
     color: white;
     display: flex;
     margin-left:  435px;
-    gap: 20px;               
-    margin-top: 10px;        
-    font-size: 13px;         
+    gap: 20px;                
+    margin-top: 10px;         
+    font-size: 13px;          
 }
 
 .name1{
