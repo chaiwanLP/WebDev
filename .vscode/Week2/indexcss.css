@@ -2,188 +2,134 @@
     font-family:'kanit';
     src: url(./Kanit/Kanit-Regular.ttf);
 }
-body{
-    background-color: rgb(48,0,85,255);
+body {
+    background-blend-mode: overlay, screen, screen, screen, screen, screen, screen, screen, normal;
+    background-image: radial-gradient(at 100vw 0px, rgb(73, 0, 133) 0%, rgb(32, 0, 51) 100%), radial-gradient(farthest-side at 100vw 0px, rgb(189, 17, 97) 0%, rgba(73, 0, 170, 0.55) 70%, rgba(73, 0, 170, 0) 100%), url("https://m.media-amazon.com/images/G/01/IMDb/design/prototypes/vlp/dot-pattern-left._CB1198675309_.png"), url("https://m.media-amazon.com/images/G/01/IMDb/design/prototypes/vlp/dot-pattern-right._CB1198675309_.png"), url("https://m.media-amazon.com/images/G/01/IMDb/design/prototypes/vlp/dot-pattern-left._CB1198675309_.png"), url("https://m.media-amazon.com/images/G/01/IMDb/design/prototypes/vlp/dot-pattern-right._CB1198675309_.png"), url("https://m.media-amazon.com/images/G/01/IMDb/design/prototypes/vlp/dot-pattern-left._CB1198675309_.png"), url("https://m.media-amazon.com/images/G/01/IMDb/design/prototypes/vlp/dot-pattern-right._CB1198675309_.png"), url("https://m.media-amazon.com/images/G/01/IMDb/design/prototypes/vlp/smoke-bg_v2.jpg");
+    background-position: right top, right top, left 200px, right min(100vmin, 20%), left min(500vmin, 50%), right min(700vmin, 60%), left min(80vmax, 90%), right min(90vmax, 95%), right top;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat-y;
+    background-size: max(800px, 100%) 100%, 100% max(120vw, 1200px), max(50%, 250px), max(50%, 250px), max(50%, 250px), max(50%, 250px), max(50%, 250px), max(50%, 250px), auto;
+    background-color: rgb(73, 0, 133);
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
 }
 .container{
     overflow-x: auto;
-    gap: 15px; 
-    padding: 0 10px;
-    gap: 10px;
+    padding: 70px 10px;
+    gap: 1%;
     margin-bottom: 10px;
+    display: flex;
+    width: 60%;
 }
 .container::-webkit-scrollbar{
     height: 8px;
-    margin-top: 10px;
 }
 .container::-webkit-scrollbar-thumb{
     background-color: rgb(255, 255, 255, 0.5);
     border-radius: 10px;
-    margin-top: 10px;
 
 }
 .container::-webkit-scrollbar-track{
     background: rgba(255, 255, 255, 0.2);
-    margin-top: 10px;
-
 }
 
 
-.Rect{
-    display: flex;
-}
-
-.image-1:hover{
-    transform: scale(1.01);
-}
-.image-2:hover{
-    transform: scale(1.01);
-}
-.image-3:hover{
-    transform: scale(1.01);
-}
-.image-4:hover{
-    transform: scale(1.01);
-}
-.image-5:hover{
-    transform: scale(1.01);
-}
-.image-6:hover{
-    transform: scale(1.01);
-
+.image:hover{
+    transform: scale(1.1);
 }
 
 
 .Rect-1{
     background-color: gray;
-    width: 300px;
-    height: 700px;
-    margin-top: 50px;
-    margin-left: 250px;
+    width: 54%;
+    height: 44%;
+    margin-top: 20px;
     position: relative;
 }
-.image-1 .full-link {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1; 
-    text-decoration: none; 
-}
-
 
 .Rect-2{
     background-color: gray;
-    width: 300px;
-    height: 700px;
-    margin-top: 50px;
-    margin-left: 50px;
+    width: 54%;
+    height: 44%;
+    margin-top: 20px;
+    margin-left: 2%;
 }
-.image-2 .full-link {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1; 
-    text-decoration: none; 
-}
-
 
 .Rect-3{
     background-color: gray;
-    width: 300px;
-    height: 700px;
-    margin-top: 50px;
-    margin-left: 50px;
+    width: 54%;
+    height: 44%;
+    margin-top: 20px;
+    margin-left: 2%;
 }
-.image-3 .full-link {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1; 
-    text-decoration: none; 
-}
-
 
 .Rect-4{
     background-color: gray;
-    width: 300px;
-    height: 700px;
-    margin-top: 50px;
-    margin-left: 50px;
+    width: 54%;
+    height: 44%;
+    margin-top: 20px;
+    margin-left: 2%;
 }
-.image-4 .full-link {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1; 
-    text-decoration: none; 
-}
-
 
 .Rect-5{
     background-color: gray;
-    width: 300px;
-    height: 700px;
-    margin-top: 50px;
-    margin-left: 50px;
+    width: 54%;
+    height: 44%;
+    margin-top: 20px;
+    margin-left: 2%;
 }
-.image-5 .full-link {
-    position: absolute;
+.image {
+    img{
+       width: 100%;
+       height: 100%; 
+    }
+    position: relative;
     width: 100%;
-    height: 100%;
-    z-index: 1; 
-    text-decoration: none; 
+    height: 400px;
+    object-fit: cover;
 }
 
 
+.image .full-link{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    text-decoration: none;
+}
 
 .squre{
-    width: 10px;
-    height: 50px;
+    width: 0.5%;
+    height: 50%;
     background-color: yellow;
     white-space: nowrap;
-    margin-left: 250px;
-    margin-top: 250px;
+    position: relative ;
+    margin-left:20% ;
 }
 .text-head{
     color:white;
     font-weight: bold;
     font-size: 50px;
-    margin-left: 20px;
+    margin-left: 20%;
+    padding: 0 100%;
 }
 .text-head:hover{
     color: yellow;
 }
-.image-1{
-    background-image: url(./image/Arcan-small.jpg);
-    background-size: cover;
-    width: 300px;
-    height: 440px;
-}
-.image-2{
-    background-image: url(./image/Mona2.jpg);
-    background-size: cover;
-    width: 300px;
-    height: 440px;
-}
-.image-3{
-    background-image: url(./image/wicked.jpg);
-    background-size: cover;
-    width: 300px;
-    height: 440px;
-}
-.image-4{
-    background-image: url(./image/squid.jpg);
-    background-size: cover;
-    width: 300px;
-    height: 440px;
-}
-.image-5{
-    background-image: url(./image/Kraven.jpg);
-    background-size: cover;
-    width: 300px;
-    height: 440px;
-}
 
+.content{
+    background-image: url('./Image/Arcan-small.jpg');
+    width: 25%;
+    height: 25%;
+    background-size: cover;
+    position: relative;
+}
 .text-under_image{
     margin: 10px;
     font-size: 20px;
@@ -195,7 +141,7 @@ body{
     margin: 5px;
 }
 .Rect-whilelist{
-    margin-left: 40px;
+    margin-left: 20px;
     margin-top: 50px;
     display: flex;
     justify-content: center;
@@ -203,7 +149,7 @@ body{
     height: 50px;
     width: 200px;
     background-color: rgb(43, 56, 56);
-    border-radius: 20px ;
+    border-radius: 2rem ;
 }
 .text-whilelist{
     color:rgb(76, 157, 233);
@@ -218,7 +164,7 @@ body{
 .link-target{
     color: white;
     text-decoration: none;
-    margin-left:100px ;
+    margin-left: 35%;
 }
 .link-target:hover{
     color: yellow;
