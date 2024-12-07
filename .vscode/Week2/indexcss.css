@@ -154,6 +154,9 @@ body {
 .text-whilelist{
     color:rgb(76, 157, 233);
 }
+.text-whilelist:hover{
+    cursor: pointer;
+}
 .Traller{
     color: white;
     margin-top: 20px;
