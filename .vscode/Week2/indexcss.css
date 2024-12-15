@@ -23,7 +23,7 @@ body {
     gap: 1%;
     margin-bottom: 10px;
     display: flex;
-    width: 60%;
+    width: 50%; 
 }
 .container::-webkit-scrollbar{
     height: 8px;
@@ -124,7 +124,6 @@ body {
 }
 
 .content{
-    background-image: url('./Image/Arcan-small.jpg');
     width: 25%;
     height: 25%;
     background-size: cover;
