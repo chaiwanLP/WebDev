@@ -1,94 +1,70 @@
-const words = [
-  "state", "no", "good", "he", "or", "course", "keep", "too",
-  "this", "those", "however", "face", "back", "time", "then", "by"
-];
-let currentWordIndex = 0;
-let score = 0;
+const currentWord = document.getElementById("current-word");
+const userInput = document.getElementById("user-input");
+const feedback = document.getElementById("feedback");
+const timerDisplay = document.getElementById("time");
+const scoreDisplay = document.getElementById("points");
+const startBtn = document.getElementById("start-btn");
+
+let words = ["apple", "banana", "cherry", "dog", "elephant", "flower", "grape", "house", "jungle", "kitten"];
 let timeLeft = 30;
-let timer;
-
-const wordContainer = document.getElementById("word");
-const inputBox = document.getElementById("input-box");
-const startButton = document.getElementById("start-btn");
-
-function renderWords() {
-  wordContainer.innerHTML = words
-    .map((word, index) => {
-      if (index === currentWordIndex) {
-        return `<span class="word current">${word}</span>`;
-      }
-      return `<span class="word">${word}</span>`;
-    })
-    .join("");
-}
-
-function handleInput() {
-  const typedWord = inputBox.value.trim();
-  const currentWord = words[currentWordIndex];
-  const wordElements = document.querySelectorAll(".word");
-
-  if (typedWord === currentWord) {
-    // หากพิมพ์ถูก
-    wordElements[currentWordIndex].classList.remove("current");
-    wordElements[currentWordIndex].classList.add("correct");
-
-    // รีเซ็ตข้อความกลับเป็นปกติ (ไม่มีไฮไลต์)
-    wordElements[currentWordIndex].innerHTML = currentWord;
-
-    currentWordIndex++;
-    inputBox.value = "";
-
-    if (currentWordIndex < words.length) {
-      wordElements[currentWordIndex].classList.add("current");
-    }
-
-    score++;
-    document.getElementById("score").innerText = score;
-  } else {
-    // หากพิมพ์ผิด
-    let highlightedWord = "";
-    for (let i = 0; i < currentWord.length; i++) {
-      if (i < typedWord.length && typedWord[i] === currentWord[i]) {
-        highlightedWord += `<span style="color: green;">${currentWord[i]}</span>`;
-      } else if (i < typedWord.length) {
-        highlightedWord += `<span style="color: red;">${currentWord[i]}</span>`;
-      } else {
-        highlightedWord += `<span>${currentWord[i]}</span>`;
-      }
-    }
-
-    wordElements[currentWordIndex].innerHTML = highlightedWord;
-    wordElements[currentWordIndex].classList.add("uncorrect");
-    
-    if (document.querySelectorAll(".uncorrect").length == 2) {
-      score--;
-      document.getElementById("score").innerText = score;
-    }
-  }
-}
-
-
+let score = 0;
+let isPlaying = false;
 
 function startGame() {
-  currentWordIndex = 0;
-  score = 0;
+  if (isPlaying) return;
+
+  isPlaying = true;
   timeLeft = 30;
+  score = 0;
+  userInput.value = "";
+  updateScore();
+  updateWord();
+  feedback.textContent = "";
+  startTimer();
+}
 
-  renderWords();
-  inputBox.value = "";
-  document.getElementById("score").innerText = score;
-  document.getElementById("time").innerText = timeLeft;
-
-  clearInterval(timer);
-  timer = setInterval(() => {
+function startTimer() {
+  const timer = setInterval(() => {
     timeLeft--;
-    document.getElementById("time").innerText = timeLeft;
-    if (timeLeft === 0) {
+    timerDisplay.textContent = timeLeft;
+
+    if (timeLeft <= 0) {
       clearInterval(timer);
-      alert(`Game Over! Your score is ${score}`);
+      endGame();
     }
   }, 1000);
 }
 
-startButton.addEventListener("click", startGame);
-inputBox.addEventListener("input", handleInput);
+function endGame() {
+  isPlaying = false;
+  feedback.textContent = `Game Over! Final Score: ${score}`;
+  feedback.style.color = "blue";
+  alert(`Game Over! Your Final Score is: ${score}`);
+}
+
+function updateWord() {
+  const randomIndex = Math.floor(Math.random() * words.length);
+  currentWord.textContent = words[randomIndex];
+  userInput.value = "";
+}
+
+function updateScore() {
+  scoreDisplay.textContent = score;
+}
+
+userInput.addEventListener("input", () => {
+  if (userInput.value === currentWord.textContent) {
+    feedback.textContent = "Correct!";
+    feedback.style.color = "green";
+    userInput.style.borderColor = "green";
+    score++;
+    updateScore();
+    updateWord();
+  } else {
+    feedback.textContent = "Keep trying...";
+    feedback.style.color = "red";
+    userInput.style.borderColor = "red";
+  }
+});
+
+startBtn.addEventListener("click", startGame);
