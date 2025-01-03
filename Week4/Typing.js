@@ -5,11 +5,12 @@ const timerDisplay = document.getElementById("time");
 const scoreDisplay = document.getElementById("points");
 const startBtn = document.getElementById("start-btn");
 
+let wrongword=0;
 let words = ["apple", "banana", "cherry", "dog", "elephant", "flower", "grape", "house", "jungle", "kitten"];
 let timeLeft = 30;
 let score = 0;
 let isPlaying = false;
-
+let GobalWord = "";
 function startGame() {
   if (isPlaying) return;
 
@@ -44,7 +45,14 @@ function endGame() {
 
 function updateWord() {
   const randomIndex = Math.floor(Math.random() * words.length);
-  currentWord.textContent = words[randomIndex];
+  let wordCurrent = words[randomIndex].split('');
+  GobalWord  = words[randomIndex];
+  let e = "";
+  for(i in wordCurrent){
+    e+=`<span>${wordCurrent[i]}</span>`;
+
+  }
+  currentWord.innerHTML = e;
   userInput.value = "";
 }
 
@@ -52,19 +60,31 @@ function updateScore() {
   scoreDisplay.textContent = score;
 }
 
-userInput.addEventListener("input", () => {
-  if (userInput.value === currentWord.textContent) {
-    feedback.textContent = "Correct!";
-    feedback.style.color = "green";
-    userInput.style.borderColor = "green";
+userInput.addEventListener("input", (event) => {
+  let userWord = currentWord.querySelectorAll("span");
+  if(GobalWord == userInput.value){
     score++;
     updateScore();
     updateWord();
-  } else {
-    feedback.textContent = "Keep trying...";
-    feedback.style.color = "red";
-    userInput.style.borderColor = "red";
+    wrongword = 0;
+
   }
+  if(wrongword == 2){
+    if(score > 0){
+      score--;
+    }
+    updateScore();
+    updateWord();
+    wrongword = 0;
+  }
+  if(userWord[userInput.value.length-1].textContent == userInput.value[userInput.value.length-1].trim()){
+    userWord[userInput.value.length-1].style.color = "green";
+    
+  }else{
+    userWord[userInput.value.length-1].style.color = "red";
+    wrongword++;
+  }
+
 });
 
 startBtn.addEventListener("click", startGame);
