@@ -7,7 +7,7 @@ const startBtn = document.getElementById("start-btn");
 
 let wrongword=0;
 let words = ["apple", "banana", "cherry", "dog", "elephant", "flower", "grape", "house", "jungle", "kitten"];
-let timeLeft = 10;
+let timeLeft = 60;
 let score = 0;
 let isPlaying = false;
 let GobalWord = "";
@@ -63,6 +63,13 @@ function updateScore() {
 userInput.addEventListener("input", (event) => {
   let userWord = currentWord.querySelectorAll("span");
 
+  if(event.inputType === "insertText" && event.data === " "){
+    return;
+  }
+
+  if(event.inputType === "deleteContentBackward"){
+    return;
+  }
   
   if(GobalWord == userInput.value){
     score++;
@@ -71,6 +78,13 @@ userInput.addEventListener("input", (event) => {
     wrongword = 0;
 
   }
+  if(userWord[userInput.value.length-1].textContent == userInput.value[userInput.value.length-1]){
+    userWord[userInput.value.length-1].style.color = "green";
+    
+  }else{
+    userWord[userInput.value.length-1].style.color = "red";
+    wrongword++;
+  }
   if(wrongword === 2){
     if(score > 0){
       score--;
@@ -78,13 +92,6 @@ userInput.addEventListener("input", (event) => {
     updateScore();
     updateWord();
     wrongword = 0;
-  }
-  if(userWord[userInput.value.length-1].textContent == userInput.value[userInput.value.length-1].trim()){
-    userWord[userInput.value.length-1].style.color = "green";
-    
-  }else{
-    userWord[userInput.value.length-1].style.color = "red";
-    wrongword++;
   }
 
 });
