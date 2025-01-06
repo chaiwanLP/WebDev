@@ -7,15 +7,14 @@ const startBtn = document.getElementById("start-btn");
 
 let wrongword=0;
 let words = ["apple", "banana", "cherry", "dog", "elephant", "flower", "grape", "house", "jungle", "kitten"];
-let timeLeft = 30;
+let timeLeft = 10;
 let score = 0;
 let isPlaying = false;
 let GobalWord = "";
 function startGame() {
   if (isPlaying) return;
-
   isPlaying = true;
-  timeLeft = 30;
+  timeLeft;
   score = 0;
   userInput.value = "";
   updateScore();
@@ -32,6 +31,7 @@ function startTimer() {
     if (timeLeft <= 0) {
       clearInterval(timer);
       endGame();
+      window.location.reload();
     }
   }, 1000);
 }
