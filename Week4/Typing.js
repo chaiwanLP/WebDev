@@ -62,6 +62,8 @@ function updateScore() {
 
 userInput.addEventListener("input", (event) => {
   let userWord = currentWord.querySelectorAll("span");
+
+  
   if(GobalWord == userInput.value){
     score++;
     updateScore();
@@ -69,7 +71,7 @@ userInput.addEventListener("input", (event) => {
     wrongword = 0;
 
   }
-  if(wrongword == 2){
+  if(wrongword === 2){
     if(score > 0){
       score--;
     }
