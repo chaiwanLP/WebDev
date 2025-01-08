@@ -61,11 +61,11 @@ function endGame() {
 
 function updateWord() {
   const randomIndex = Math.floor(Math.random() * words.length);
-  let wordCurrent = words[randomIndex].split('');
+  let wordnow = words[randomIndex].split('');
   GobalWord  = words[randomIndex];
   let e = "";
-  for(i in wordCurrent){
-    e+=`<span>${wordCurrent[i]}</span>`;
+  for(i in wordnow){
+    e+=`<span>${wordnow[i]}</span>`;
 
   }
   currentWord.innerHTML = e;
@@ -81,7 +81,8 @@ userInput.addEventListener("input", (event) => {
       let userWord = currentWord.querySelectorAll("span");
 
     if(event.inputType === "insertText" && event.data === " "){
-      return;
+      userWord[userInput.value.length-1].style.color = "red";
+      
     }
 
     if(event.inputType === "deleteContentBackward"){
