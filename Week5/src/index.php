@@ -1,25 +1,33 @@
 <?php
 session_start();
 
+if (isset($_GET['delete'])) {
+  $id = (int)$_GET['delete'];
+  if (isset($_SESSION['students'][$id])) {
+      unset($_SESSION['students'][$id]);
+      $_SESSION['students'] = array_values($_SESSION['students']);
+  }
+  header("Location: index.php");
+  exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $prefix = $_POST['prefix'];
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
-    $dob = $_POST['dob'];
+    $dateyear = $_POST['dateyear'];
     $level = $_POST['level'];
     $grade = $_POST['grade'];
 
-    // เก็บข้อมูลลงใน Session
     $_SESSION['students'][] = [
         'prefix' => $prefix,
         'first_name' => $first_name,
         'last_name' => $last_name,
-        'dob' => $dob,
+        'dateyear' => $dateyear,
         'level' => $level,
         'grade' => $grade
     ];
 
-    // กลับไปหน้า index.php
     header("Location: index.php");
     exit();
 }
@@ -33,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <title>Student List</title>
 </head>
-<body>
-  <div class="container mt-4">
+<body >
+  <div class="container mt-4" >
     <h1 class="text-center mb-4">Student Management</h1>
     <a href="AddStudent.php" class="btn btn-success mb-3">Add New Student</a>
     <table class="table table-striped table-bordered">
@@ -58,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <td><?= $student['prefix'] ?></td>
               <td><?= $student['first_name'] ?></td>
               <td><?= $student['last_name'] ?></td>
-              <td><?= $student['dob'] ?></td>
+              <td><?= $student['dateyear'] ?></td>
               <td><?= $student['level'] ?></td>
               <td><?= $student['grade'] ?></td>
               <td>

@@ -3,31 +3,37 @@ session_start();
 
 $id = $_GET['id'];
 
-// ตรวจสอบว่ามีข้อมูลใน Session หรือไม่
 if (!isset($_SESSION['students'][$id])) {
     header("Location: index.php");
     exit();
 }
 
 $student = $_SESSION['students'][$id];
+$err = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $prefix = $_POST['prefix'];
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
-    $dob = $_POST['dob'];
+    $dateyear = $_POST['dateyear'];
     $level = $_POST['level'];
-    $_SESSION['students'][$id] = [
-        'prefix' => $prefix,
-        'first_name' => $first_name,
-        'last_name' => $last_name,
-        'dob' => $dob,
-        'level' => $level,
-        'grade' => $grade
-    ];
+    $grade = $_POST['grade'];
 
-    header("Location: index.php");
-    exit();
+    if ($level === false || $grade === false || $level < 0 || $level > 5 || $grade < 0 || $grade > 4.00) {
+      $err = 'Year Level must be between 0-5 and Grade must be between 0.00-4.00.';
+  } else {
+        $_SESSION['students'][$id] = [
+            'prefix' => $prefix,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'dateyear' => $dateyear,
+            'level' => $level,
+            'grade' => $grade
+        ];
+
+        header("Location: index.php");
+        exit();
+    }
 }
 ?>
 
@@ -39,11 +45,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <title>Edit Student</title>
 </head>
-<body>
-  <div class="container mt-4">
-    <h1 class="text-center mb-4">Edit Student</h1>
-    <form action="index.php?id=<?= $id ?>" method="POST">
 
+<body >
+  <div class="container mt-5 p-5">  
+    <h1 class="text-center mb-4">Edit Student</h1>
+
+    <?php if ($err): ?>
+      <div class="alert alert-danger"><?= $err ?></div>
+    <?php endif; ?>
+
+    <form action="edit.php?id=<?= $id ?>" method="POST">
+    <div class="col-lg-6 p-3 shadow rounded justify-content-center mx-auto">
       <div class="mb-3">
         <label for="prefix" class="form-label">Prefix</label>
         <select id="prefix" name="prefix" class="form-select" required>
@@ -63,23 +75,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       </div>
       
       <div class="mb-3">
-        <label for="dob" class="form-label">Date of Birth :</label>
-        <input type="date" id="dob" name="dob" class="form-control" value="<?= $student['dob'] ?>" required>
+        <label for="dateyear" class="form-label">Date of Birth :</label>
+        <input type="date" id="dateyear" name="dateyear" class="form-control" value="<?= $student['dateyear'] ?>" required>
       </div>
 
       <div class="mb-3">
         <label for="level" class="form-label">Year Level :</label>
-        <input type="number" id="level" name="level" class="form-control" value="<?= $student['level'] ?>" required>
+        <input type="number" id="level" name="level" class="form-control" value="<?= $student['level'] ?>" required min="0">
       </div>
 
       <div class="mb-3">
-        <label for="grade" class="form-label">Year Level :</label>
-        <input type="number" id="grade" name="grade" class="form-control" value="<?= $student['grade'] ?>" required>
+        <label for="grade" class="form-label">Grade :</label>
+        <input type="number" id="grade" name="grade" class="form-control" value="<?= $student['grade'] ?>" required min="0" step="0.01">
       </div>
 
       <button type="submit" class="btn btn-success">Update</button>
       <a href="index.php" class="btn btn-secondary">Cancel</a>
     </form>
+    </div>
   </div>
+  
 </body>
 </html>
