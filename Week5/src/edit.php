@@ -11,7 +11,7 @@ if (!isset($_SESSION['students'][$id])) {
 $student = $_SESSION['students'][$id];
 $err = "";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $prefix = $_POST['prefix'];
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($level < 0 || $level > 5 || $grade < 0 || $grade > 4.00) {
       $err = 'Year Level must be between 0-5 and Grade must be between 0.00-4.00.';
-  } else {
+    }else {
         $_SESSION['students'][$id] = [
             'prefix' => $prefix,
             'first_name' => $first_name,
