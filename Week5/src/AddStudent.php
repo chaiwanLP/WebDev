@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $level =$_POST['level'];
     $grade = filter_var($_POST['grade'], FILTER_VALIDATE_FLOAT);
 
-    if ($level === false || $grade === false || $level < 0 || $level > 5 || $grade < 0 || $grade > 4.00) {
+    if ($level < 0 || $level > 5 || $grade < 0 || $grade > 4.00) {
         $err = 'Year Level must be between 0-5 and Grade must be between 0.00-4.00.';
     } else {
         $index = isset($_SESSION['students']) ? count($_SESSION['students']) : 0;

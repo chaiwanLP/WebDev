@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $level = $_POST['level'];
     $grade = $_POST['grade'];
 
-    if ($level === false || $grade === false || $level < 0 || $level > 5 || $grade < 0 || $grade > 4.00) {
+    if ($level < 0 || $level > 5 || $grade < 0 || $grade > 4.00) {
       $err = 'Year Level must be between 0-5 and Grade must be between 0.00-4.00.';
   } else {
         $_SESSION['students'][$id] = [
