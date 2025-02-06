@@ -4,6 +4,12 @@ include "DB.php";
 
 $err = '';
 
+if(!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $prefix = $_POST['prefix'];
     $first_name = $_POST['first_name'];

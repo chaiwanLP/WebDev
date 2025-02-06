@@ -2,6 +2,12 @@
 session_start();
 include "DB.php";
 
+if(!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+
 $err = "";
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 

@@ -9,6 +9,13 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
+if(!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+
+
 $result = $conn->query("SELECT * FROM students");
 $students = $result->fetch_all(MYSQLI_ASSOC);
 ?>
@@ -24,7 +31,12 @@ $students = $result->fetch_all(MYSQLI_ASSOC);
 <body>
   <div class="container mt-4">
     <h1 class="text-center mb-4">Student Management</h1>
-    <a href="AddSTD.php" class="btn btn-success mb-3">Add New Student</a>
+
+    <div class="d-flex justify-content-between mb-3">
+      <a href="AddSTD.php" class="btn btn-success">Add New Student</a>
+      <a href="logout.php" class="btn btn-danger">Logout</a>
+    </div>
+    
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
