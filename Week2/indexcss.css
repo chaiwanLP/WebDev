@@ -23,7 +23,7 @@ body {
     gap: 1%;
     margin-bottom: 10px;
     display: flex;
-    width: 50%; 
+    width: 30%; 
 }
 .container::-webkit-scrollbar{
     height: 8px;

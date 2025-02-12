@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaseline Promotion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f8f8;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4081;
+        }
+        .carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            height: 300px; /* กำหนดความสูงของแต่ละภาพ */
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* ทำให้ภาพบีบและครอบพื้นที่ทั้งหมด */
+            border-radius: 10px;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        .badge {
+            background: red;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">Konvy Official Store</div>
+    <div class="carousel">
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <div class="slides">
+            <div class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtnvAOajH9gS4C30cRF7rD_voaTAKly2Ntaw&s" alt="Vaseline 1"></div>
+            <div class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtnvAOajH9gS4C30cRF7rD_voaTAKly2Ntaw&s" alt="Vaseline 2"></div>
+            <div class="slide"><img src="./Image/Aaron Taylor-Johnson.jpg" alt="Vaseline 3"></div>
+            <div class="slide"><img src="./Image/Arcan.jpg" alt="Vaseline 4"></div>
+        </div>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
+    </div>
+    <div class="badge">ของแท้ 100%</div>
+</div>
+
+<script>
+    let slideIndex = 0;
+    const slides = document.querySelector(".slides");
+
+    function showSlide(index) {
+        const totalSlides = document.querySelectorAll(".slide").length;
+        if (index >= totalSlides) slideIndex = 0;
+        if (index < 0) slideIndex = totalSlides - 1;
+        slides.style.transform = `translateX(${-slideIndex * 100}%)`;
+    }
+
+    function nextSlide() {
+        slideIndex++;
+        showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+        slideIndex--;
+        showSlide(slideIndex);
+    }
+</script>
+
+</body>
+</html>
