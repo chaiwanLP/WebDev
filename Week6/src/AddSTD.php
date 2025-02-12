@@ -21,6 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($level < 0 || $level > 5 || $grade < 0 || $grade > 4.00) {
         $err = 'Year Level must be between 0-5 and Grade must be between 0.00-4.00.';
     } else {
+        $prefix = htmlspecialchars($prefix);
+        $first_name = htmlspecialchars($first_name);
+        $last_name = htmlspecialchars($last_name);
+        $dob = htmlspecialchars($dob);
+        $level = htmlspecialchars($level);
+        $grade = htmlspecialchars($grade);
         $stmt = $conn->prepare("INSERT INTO students (prefix, first_name, last_name, dob, level, grade) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssdd", $prefix, $first_name, $last_name, $dob, $level, $grade);
 
