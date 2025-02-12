@@ -2,22 +2,28 @@
 session_start();
 require 'DB.php'; 
 
+
+if(!isset($_SESSION['user_id'])) {
+  header("Location: login.php");
+  exit();
+}
+
 if (isset($_GET['delete'])) {
     $id = (int)$_GET['delete'];
-    $conn->query("DELETE FROM students WHERE id = $id");
+    $stmt"DELETE FROM students WHERE id = ?");
+    $stmt->bind_param("i",  = $conn->prepare($id);
+    $stmt->execute();
+    $stmt->close();
+
     header("Location: index.php");
     exit();
 }
 
-if(!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
-
 
 $result = $conn->query("SELECT * FROM students");
 $students = $result->fetch_all(MYSQLI_ASSOC);
+
+
 ?>
 
 <!DOCTYPE html>
