@@ -10,8 +10,8 @@ if(!isset($_SESSION['user_id'])) {
 
 if (isset($_GET['delete'])) {
     $id = (int)$_GET['delete'];
-    $stmt"DELETE FROM students WHERE id = ?");
-    $stmt->bind_param("i",  = $conn->prepare($id);
+    $stmt("DELETE FROM students WHERE id = ?");
+    $stmt->bind_param("i",$conn->prepare($id));
     $stmt->execute();
     $stmt->close();
 
