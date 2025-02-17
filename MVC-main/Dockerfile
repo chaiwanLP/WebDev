@@ -1,7 +1,7 @@
 FROM php:8.2-apache
 
 # ติดตั้ง extensions ที่จำเป็น
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install mysqli
 
 # เปิดใช้งาน mod_rewrite สำหรับ URL Routing
 RUN a2enmod rewrite
