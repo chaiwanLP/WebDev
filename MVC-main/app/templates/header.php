@@ -1,11 +1,17 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
-<head></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+</head>
 
 <body>
     <header>
-        <h1>WebSite Name</h1>
+        <h1>Welcome to the Student Portal</h1>
     </header>
+
     <nav>
         <a href='/'>Home</a>
         <a href='/contact'>Contact</a>
