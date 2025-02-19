@@ -22,10 +22,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['timestamp'] = time();
             // renderView('home_get');
             header('Location: /');
+            echo 'Login successful';
             exit();
         }else{
-            renderView('login', ['error' => 'Invalid email or password']);
+            echo '<script>alert("Invalid email or password")</script>';
+            renderView('login_get', ['error' => 'Invalid email or password']);
         }
+    }else{
+        echo '<script>alert("No account found")</script>';
+        renderView('login_get');
     }
 
     exit();
