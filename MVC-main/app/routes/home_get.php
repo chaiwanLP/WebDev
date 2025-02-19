@@ -1,2 +1,3 @@
 <?php
-renderView('home_get');
+$student = getStudentById($_SESSION['student_id']);
+renderView('home_get',array('student' => $student));

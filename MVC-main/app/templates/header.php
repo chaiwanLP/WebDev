@@ -3,10 +3,12 @@
 
 <head>
     <nav>
+        <a href="login">Login</a>
         <a href='/'>Home</a>
         <a href='/contact'>Contact</a>
         <a href='/students'>Students</a>
         <a href='/courses_new'>New Course</a>
+        <a href="/logout">Logout</a>
     </nav>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
