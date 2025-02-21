@@ -21,7 +21,7 @@ require_once INCLUDES_DIR . '/router.php';
 require_once INCLUDES_DIR . '/view.php';
 
 // Call dispatch to handle requests
-const PUBLIC_ROUTES = ['/', '/login'];
+const PUBLIC_ROUTES = ['/', '/login','/register'];
 
 if (in_array(strtolower($_SERVER['REQUEST_URI']), PUBLIC_ROUTES)) {
     dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);

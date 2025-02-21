@@ -20,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['student_id'] = $student['student_id'];
             $_SESSION['student_name'] = $student['first_name'] . ' ' . $student['last_name'];
             $_SESSION['timestamp'] = time();
-            // renderView('home_get');
             header('Location: /');
             echo 'Login successful';
             exit();

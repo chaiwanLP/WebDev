@@ -5,7 +5,7 @@ declare(strict_types=1);
 // Constant values for router
 const ALLOW_METHODS = ['GET', 'POST'];
 const INDEX_URI = '';
-const INDEX_ROUNTE = 'home';
+const INDEX_ROUNTE = 'login';
 
 
 // Normalize URI
@@ -16,7 +16,6 @@ function normalizeUri(string $uri): string
     return $uri == INDEX_URI ? INDEX_ROUNTE : $uri;
 }
 
-// Page not found function
 function notFound(){
     http_response_code(404);
     echo "404 Not Found";

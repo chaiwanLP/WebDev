@@ -20,7 +20,6 @@ function getStudentsByKeyword(string $keyword): mysqli_result|bool
     $result = $stmt->get_result();
     return $result;
 }
-
 function deleteStudentsById(int $id): bool
 {
     $conn = getConnection();
