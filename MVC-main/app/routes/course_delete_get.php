@@ -6,12 +6,12 @@ $student_id = $_SESSION['student_id'];
 
 if(UnEnroll($student_id, (int)$course_id)){
     echo "<script type='text/javascript'>
-        alert('ลบเรียนสําเร็จ');
+        alert('Delete Course Successfully');
         window.location.href = '/info';
       </script>";
 } else {
     echo "<script type='text/javascript'>
-        alert('ลบเรียนไม่สําเร็จ');
+        alert('Delete Course Failed');
         window.location.href = '/info';
       </script>";
 }

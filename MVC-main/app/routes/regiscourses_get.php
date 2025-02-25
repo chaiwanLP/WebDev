@@ -12,22 +12,21 @@ if (!isset($_GET['course_id'])) {
 $student_id = $_SESSION['student_id']; 
 $course_id = $_GET['course_id'];
 
-if(HasEnroll($student_id, $course_id)){
+if(!HasEnroll($student_id, $course_id)){
     if (enrollStudentInCourse($student_id, $course_id)) {
         echo "<script type='text/javascript'>
-        alert('ลงทะเบียนเรียนสําเร็จ!');
+        alert('Successfully registered for the course!');
         window.location.href = '/info';
-      </script>";
+        </script>";
     } else {
         echo "<script type='text/javascript'>
-        alert('เกิดข้อผิดพลาดในการลงทะเบียนเรียน');
+        alert('Failed to register for the course!');
         window.location.href = '/info';
       </script>";
-        
     }
 }else{
     echo "<script type='text/javascript'>
-        alert('คุณลงทะเบียนวิชานี้ไปแล้ว');
-        window.location.href = '/info';
+        alert('You have already registered for this course!');
+        window.location.href = '/courses_new';
       </script>";
 }

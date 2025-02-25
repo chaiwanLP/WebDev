@@ -32,10 +32,10 @@ function HasEnroll(int $student_id, int $course_id){
     if ($stmt_check->num_rows > 0) {
         $error = "Course already enrolled!";
         $stmt_check->close();   
-        return false;
+        return true;
     } else {
         $stmt_check->close();  
-        return true;
+        return false;
     }
 }
 function enrollStudentInCourse(int $student_id, int $course_id): bool {
@@ -43,12 +43,13 @@ function enrollStudentInCourse(int $student_id, int $course_id): bool {
         $enrollment_query = 'INSERT INTO enrollment (student_id, course_id, enrollment_date) VALUES (?, ?, NOW())';
         $stmt = $conn->prepare($enrollment_query);
         $stmt->bind_param('ii', $student_id, $course_id);
+        $stmt->execute();
         $success = $stmt->affected_rows > 0; 
         $stmt->close();
         return $success;
 }
 function UnEnroll(int $student_id, int $course_id): bool { 
-    $conn = getConnection(); 
+        $conn = getConnection(); 
         $unenrollment_query = 'DELETE FROM enrollment WHERE student_id=? AND course_id=?';
         $stmt = $conn->prepare($unenrollment_query);
         $stmt->bind_param('ii', $student_id, $course_id);

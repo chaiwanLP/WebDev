@@ -6,7 +6,6 @@
         <?php if (isset($data['student']) && mysqli_num_rows($data['student']) > 0): ?>
             <?php while ($row = mysqli_fetch_assoc($data['student'])): ?>
                 <table class="table table-bordered">
-                    <tr><th>ID</th><td><?= htmlspecialchars($row['student_id'] ?? '') ?></td></tr>
                     <tr><th>ชื่อ</th><td><?= htmlspecialchars($row['first_name'] ?? '') ?></td></tr>
                     <tr><th>นามสกุล</th><td><?= htmlspecialchars($row['last_name'] ?? '') ?></td></tr>
                     <tr><th>Email</th><td><?= htmlspecialchars($row['email'] ?? '') ?></td></tr>
