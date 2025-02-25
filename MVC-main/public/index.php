@@ -15,15 +15,16 @@ const TEMPLATES_DIR = __DIR__ . '/../app/templates';
 
 session_start();
 
-// Include router and view renderer
 require_once INCLUDES_DIR . '/db.php';
 require_once INCLUDES_DIR . '/router.php';
 require_once INCLUDES_DIR . '/view.php';
 
-// Call dispatch to handle requests
 
 
 const PUBLIC_ROUTES = ['/', '/login','/register'];
+
+// session_unset();
+// session_destroy();
 
 
 if (in_array(strtolower($_SERVER['REQUEST_URI']), PUBLIC_ROUTES)) {
