@@ -9,30 +9,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone_number = trim($_POST['phone']);
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $_SESSION['error'] = "Invalid email format!";
-        header("Location: register_get");
+        echo '<script>alert("Invalid email format!")
+        window.location.href = "/register_get";</script>';
         exit;
     }
 
     if (strlen($password) < 6) {
-        $_SESSION['error'] = "Password must be at least 6 characters long!";
-        header("Location: register_get");
+        echo '<script>alert("Password must be at least 6 characters long!")
+        window.location.href = "/register";</script>';
         exit;
     }
 
     $conn = getConnection();
 
-    $stmt = $conn->prepare("SELECT * FROM students WHERE email = ?");
+    $stmt = $conn->prepare("SELECT student_id FROM students WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
-    
+
     if ($result->num_rows > 0) {
-        $_SESSION['error'] = "Email already exists!";
-        header("Location: register_get");
+        echo '<script>alert("Email already exists!")
+        window.location.href = "/register_get";</script>';
+        
         exit;
     }
-
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     $stmt = $conn->prepare("INSERT INTO students (first_name, last_name, email, password, date_of_birth, phone_number, image) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -40,12 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     if ($stmt->execute()) {
-        $_SESSION['success'] = "Registration successful! Please log in.";
-        header("Location: login_get");
+        echo '<script>alert("Registration successful! Please log in.")
+        window.location.href = "/login";</script>';
         exit;
     } else {
-        $_SESSION['error'] = "Registration failed. Please try again.";
-        header("Location: register_get");
+        echo '<script>alert("Registration failed. Please try again.")
+        window.location.href = "/login";</script>';
         exit;
     }
 

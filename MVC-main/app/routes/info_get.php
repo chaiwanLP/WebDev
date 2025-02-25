@@ -6,9 +6,6 @@ if ($student_id !== NULL) {
     $course =  findCouseById((int)$student_id);
 } else {
     $student = null; 
+    header('Location: /login');
 }
-//echo $course;
 renderView('info_get', array('student' => $student, 'course' => $course));
-// while ($row = mysqli_fetch_assoc($course)):
-//    echo $row['course_name'];
-// endwhile;

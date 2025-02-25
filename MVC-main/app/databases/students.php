@@ -9,37 +9,37 @@ function getStudents(): mysqli_result|bool {
     return $result;
 }
 
-function getStudentsByKeyword(string $keyword): mysqli_result|bool
-{
-    $conn = getConnection();
-    $sql = 'select * from students where first_name like ? or last_name like ?';
-    $stmt = $conn->prepare($sql);
-    $keyword = '%'. $keyword .'%';
-    $stmt->bind_param('ss',$keyword, $keyword);
-    $res = $stmt->execute();
-    $result = $stmt->get_result();
-    return $result;
-}
-function deleteStudentsById(int $id): bool
-{
-    $conn = getConnection();
+// function getStudentsByKeyword(string $keyword): mysqli_result|bool
+// {
+//     $conn = getConnection();
+//     $sql = 'select * from students where first_name like ? or last_name like ?';
+//     $stmt = $conn->prepare($sql);
+//     $keyword = '%'. $keyword .'%';
+//     $stmt->bind_param('ss',$keyword, $keyword);
+//     $res = $stmt->execute();
+//     $result = $stmt->get_result();
+//     return $result;
+// }
+// function deleteStudentsById(int $id): bool
+// {
+//     $conn = getConnection();
     
-    $sql1 = 'DELETE FROM enrollment WHERE student_id = ?';
-    $stmt1 = $conn->prepare($sql1);
-    $stmt1->bind_param('i', $id);
-    $stmt1->execute();
-    $stmt1->close();
+//     $sql1 = 'DELETE FROM enrollment WHERE student_id = ?';
+//     $stmt1 = $conn->prepare($sql1);
+//     $stmt1->bind_param('i', $id);
+//     $stmt1->execute();
+//     $stmt1->close();
 
 
-    $sql2 = 'DELETE FROM students WHERE student_id = ?';
-    $stmt2 = $conn->prepare($sql2);
-    $stmt2->bind_param('i', $id);
-    if (!$stmt2->execute()) {
-        die("Error deleting student: " . $stmt2->error);
-    }
+//     $sql2 = 'DELETE FROM students WHERE student_id = ?';
+//     $stmt2 = $conn->prepare($sql2);
+//     $stmt2->bind_param('i', $id);
+//     if (!$stmt2->execute()) {
+//         die("Error deleting student: " . $stmt2->error);
+//     }
 
-    return $stmt2->affected_rows > 0;
-}
+//     return $stmt2->affected_rows > 0;
+// }
 function getStudentById(int $id): mysqli_result|bool
 {
     $conn = getConnection();
@@ -50,25 +50,25 @@ function getStudentById(int $id): mysqli_result|bool
     $result = $stmt->get_result();
     return $result;
 }
-function changePassword(int $id, string $password): bool
-{
-    $conn = getConnection();
-    $sql = 'update students set password = ? where student_id = ?';
-    $stmt = $conn->prepare($sql);
-    $hash = password_hash($password, PASSWORD_DEFAULT);
-    $stmt->bind_param('si', $hash, $id);
-    try {
-        $stmt->execute();
-        if ($stmt->affected_rows > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    } catch (Exception $e) {
-        return false;
-    }
-    return $result;
-}
+// function changePassword(int $id, string $password): bool
+// {
+//     $conn = getConnection();
+//     $sql = 'update students set password = ? where student_id = ?';
+//     $stmt = $conn->prepare($sql);
+//     $hash = password_hash($password, PASSWORD_DEFAULT);
+//     $stmt->bind_param('si', $hash, $id);
+//     try {
+//         $stmt->execute();
+//         if ($stmt->affected_rows > 0) {
+//             return true;
+//         } else {
+//             return false;
+//         }
+//     } catch (Exception $e) {
+//         return false;
+//     }
+//     return $result;
+// }
 function enrolled(int $stdent_id, int $course_id ){
     $conn = getConnection();
     $sql = 'INSERT INTO enrollment (student_id, course_id, enrollment_date) VALUES (?, ?, NOW()';
@@ -77,7 +77,13 @@ function enrolled(int $stdent_id, int $course_id ){
 }
 function findCouseById(int $id): mysqli_result|bool{
     $conn = getConnection();
-    $sql = 'SELECT courses.course_id,courses.course_name,courses.course_code,courses.instructor,enrollment.enrollment_date FROM students,enrollment,courses WHERE students.student_id = enrollment.student_id AND courses.course_id=enrollment.course_id AND students.student_id=?';
+    $sql = 'SELECT courses.course_id,courses.course_name,
+            courses.course_code,courses.instructor,
+            enrollment.enrollment_date 
+            FROM students,enrollment,courses 
+            WHERE students.student_id = enrollment.student_id 
+            AND courses.course_id=enrollment.course_id 
+            AND students.student_id=? ';
     $stmt = $conn->prepare($sql);    
     $stmt->bind_param('i', $id);
     $stmt->execute();    

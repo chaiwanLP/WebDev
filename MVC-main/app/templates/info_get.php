@@ -9,6 +9,7 @@
                     <tr><th>ID</th><td><?= htmlspecialchars($row['student_id'] ?? '') ?></td></tr>
                     <tr><th>ชื่อ</th><td><?= htmlspecialchars($row['first_name'] ?? '') ?></td></tr>
                     <tr><th>นามสกุล</th><td><?= htmlspecialchars($row['last_name'] ?? '') ?></td></tr>
+                    <tr><th>Email</th><td><?= htmlspecialchars($row['email'] ?? '') ?></td></tr>
                     <tr><th>วันเกิด</th><td><?= htmlspecialchars($row['date_of_birth'] ?? '') ?></td></tr>
                     <tr><th>เบอร์โทรศัพท์</th><td><?= htmlspecialchars($row['phone_number'] ?? '') ?></td></tr>
                 </table>
@@ -38,17 +39,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php  
-                    foreach ($data['course'] as $course) {
-                        echo "<tr>";
-                        echo "<td>" . htmlspecialchars($course['course_code']) . "</td>";
-                        echo "<td>" . htmlspecialchars($course['course_name']) . "</td>";
-                        echo "<td>" . htmlspecialchars($course['instructor']) . "</td>";
-                        echo "<td>" . htmlspecialchars($course['enrollment_date']) . "</td>";
-                        echo "<td><a href='course_delete?course_id=" . htmlspecialchars($course['course_id']) . "' class='btn btn-danger'>ถอนรายวิชา</a></td>";
-                        echo "</tr>";
-                    }
-                    ?>
+                <?php  
+                foreach ($data['course'] as $course) {
+                    echo "<tr>";
+                    echo "<td>" . htmlspecialchars($course['course_code']) . "</td>";
+                    echo "<td>" . htmlspecialchars($course['course_name']) . "</td>";
+                    echo "<td>" . htmlspecialchars($course['instructor']) . "</td>";
+                    echo "<td>" . htmlspecialchars($course['enrollment_date']) . "</td>";
+                    echo "<td>
+                            <a href='course_delete?course_id=" . htmlspecialchars($course['course_id']) . "' 
+                                class='btn btn-danger' 
+                                onclick='return confirm(\"Do you want to drop this course??\");'>
+                                Withdraw a course
+                            </a>
+                            </td>";
+                    echo "</tr>";
+                }
+                ?>
+
                 </tbody>
             </table>
         <?php else: ?>

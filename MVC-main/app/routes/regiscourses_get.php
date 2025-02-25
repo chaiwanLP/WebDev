@@ -14,7 +14,6 @@ $course_id = $_GET['course_id'];
 
 if(HasEnroll($student_id, $course_id)){
     if (enrollStudentInCourse($student_id, $course_id)) {
-        //echo "ลงทะเบียนเรียนสําเร็จ!";
         echo "<script type='text/javascript'>
         alert('ลงทะเบียนเรียนสําเร็จ!');
         window.location.href = '/info';
@@ -27,7 +26,6 @@ if(HasEnroll($student_id, $course_id)){
         
     }
 }else{
-    //echo "คุณลงทะเบียนแล้ว";
     echo "<script type='text/javascript'>
         alert('คุณลงทะเบียนวิชานี้ไปแล้ว');
         window.location.href = '/info';

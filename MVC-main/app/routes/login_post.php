@@ -19,15 +19,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['student_id'] = $student['student_id'];
             $_SESSION['student_name'] = $student['first_name'] . ' ' . $student['last_name'];
             $_SESSION['timestamp'] = time();
-            header('Location: /');
-            echo 'Login successful';
+            echo'<script>alert("Login successful")</script>
+            <script>window.location.href = "/";</script>';
+            
             exit();
         }else{
-            echo '<script>alert("Invalid email or password")</script>';
+            echo '<script>alert("Invalid Email or Password")</script>';
             renderView('login_get', ['error' => 'Invalid email or password']);
         }
     }else{
-        echo '<script>alert("No account found")</script>';
+        echo '<script>alert("No Account Found")</script>';
         renderView('login_get');
     }
 
