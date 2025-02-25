@@ -69,3 +69,18 @@ function changePassword(int $id, string $password): bool
     }
     return $result;
 }
+function enrolled(int $stdent_id, int $course_id ){
+    $conn = getConnection();
+    $sql = 'INSERT INTO enrollment (student_id, course_id, enrollment_date) VALUES (?, ?, NOW()';
+    $stmt = $conn->prepare($sql);
+
+}
+function findCouseById(int $id): mysqli_result|bool{
+    $conn = getConnection();
+    $sql = 'SELECT courses.course_id,courses.course_name,courses.course_code,courses.instructor,enrollment.enrollment_date FROM students,enrollment,courses WHERE students.student_id = enrollment.student_id AND courses.course_id=enrollment.course_id AND students.student_id=?';
+    $stmt = $conn->prepare($sql);    
+    $stmt->bind_param('i', $id);
+    $stmt->execute();    
+    $result = $stmt->get_result();
+    return $result;
+}

@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 getConnection();
-require_once INCLUDES_DIR . '/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
