@@ -4,10 +4,10 @@
     </div>
 <?php endif; ?>
 
-<div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="row w-100">
-        <div class="col-md-6 col-lg-4 mx-auto">
-            <div class="card shadow-lg rounded-4 p-4 bg-light">
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="row w-100 mt-5">
+        <div class="col-md-6 col-lg-4 mx-auto mt-5">
+            <div class="card shadow-lg rounded-4 p-4 bg-light mt-5">
                 <h2 class="text-center mb-4">Login</h2>
 
                 <form action="login" method="post">
