@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="text-center mt-3">
-                        <p>Already have an account? <a href="login_get.php" class="text-primary">Login</a></p>
+                        <p>Already have an account? <a href="login_get" class="text-primary">Login</a></p>
                     </div>
                 </form>
             </div>
